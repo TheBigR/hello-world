@@ -1,0 +1,6 @@
+c:\users\royke\documents\visual studio 2012\Projects\WebeastSample\WebeastSample\bin\Debug\WebeastSample.exe.config
+c:\users\royke\documents\visual studio 2012\Projects\WebeastSample\WebeastSample\bin\Debug\WebeastSample.exe
+c:\users\royke\documents\visual studio 2012\Projects\WebeastSample\WebeastSample\bin\Debug\WebeastSample.pdb
+c:\users\royke\documents\visual studio 2012\Projects\WebeastSample\WebeastSample\obj\Debug\WebeastSample.csprojResolveAssemblyReference.cache
+c:\users\royke\documents\visual studio 2012\Projects\WebeastSample\WebeastSample\obj\Debug\WebeastSample.exe
+c:\users\royke\documents\visual studio 2012\Projects\WebeastSample\WebeastSample\obj\Debug\WebeastSample.pdb
