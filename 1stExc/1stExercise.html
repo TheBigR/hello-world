@@ -27,7 +27,32 @@
 
     <br>
 
-    <button onclick="btnClick('Hi')">Submit</button>
+    <button onclick="btnClick(document.getElementById('input1').value)">Submit</button>
+
+    <br>
+    <p>question.qText
+        <br> question.qOptions
+    </p>
+
+
+
+    <script>
+        function btnClick(Answer) {
+            if (Answer == 5) {
+                alert("Wrong!");
+            }
+            if (Answer == 3) {
+                alert("Hell yea");
+            }
+
+        }
+
+        const question = {
+            qText: 'How many?',
+            qOptions: ['2', '3', '7', 'Ma kama?'],
+            correctIndex: 2
+        }
+    </script>
 
 </body>
 
