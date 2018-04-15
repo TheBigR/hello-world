@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>handlebars and lodash</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">    
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.js'></script>
+</head>
+<body>
+
+
+    <section>
+            <h1>handlebars and lodash</h1>
+            <button class="load">click to fetch flights JSON</button>
+    </section>
+
+    <section>
+        <button class="sort-dep">Sort By Departure</button>
+        <button class="sort-arr">Sort By Arrival</button>
+        <select id="actualSelect">
+            <option>nothing to show yet</option>
+        </select>
+        <script id='Airline-dropdown-template' type='text/x-handlebars-template'>
+            {{#each this}}
+            <select>
+                <option>{{airline}}</option>
+            </select>
+            {{/each}}
+        </script>
+        <button class="sort-arg">filter by airline</button>
+        <table id="flight-table">
+                <caption>flights</caption>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>From</th>
+                        <th>To</th>
+                        <th>Departure</th>
+                        <th>Arrival</th>
+                        <th>By</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            No results yet (her come output of Handlebars template)
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </section>
+
+    <script id='table-row-template' type='text/x-handlebars-template'>
+        {{#each this}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{from}}</td>
+            <td>{{to}}</td>
+            <td>{{departure}}</td>
+            <td>{{arrival}}</td>
+            <td>{{by}}</td>
+        </tr>
+        {{/each}}
+    </script>
+
+    <script>
+        const tBodyTmpl = Handlebars.compile(document.getElementById('table-row-template').innerHTML);
+        const selectOptionTmpl = Handlebars.compile(document.getElementById('Airline-dropdown-template').innerHTML);
+
+        let flightsData = [];
+        let selectOptions = [];
+
+        document.querySelector('button.load').onclick = function() {
+            fetch('flights.json')
+                .then(res => res.json())
+                .then(data => {
+                    flightsData = data;
+                    renderTable(flightsData);
+                });
+
+            selectOptions.push('airline first option');
+            selectOptions.push('airline second option');
+            selectOptions.push('airline seconttt');
+            addOption(selectOptions);
+        };
+
+
+        // render tbody with handlebars
+        function renderTable(data) {
+            document.querySelector('#flight-table tbody').innerHTML = tBodyTmpl(data);
+        }
+
+        // add option to dropdown with handlebars
+        function addOption(data) {
+            document.querySelector('#actualSelect option').innerHTML = selectOptionTmpl(data);
+        }
+
+        //
+
+        // sorting by departure
+        document.querySelector('button.sort-dep').onclick = function() {
+            flightsData = _.sortBy(flightsData, flight => new Date(flight.departure));
+            renderTable(flightsData);
+        };
+
+        //sorting by arrival
+        document.querySelector('button.sort-arr').onclick = function() {
+            flightsData = _.orderBy(flightsData,['arrival'],['desc']);
+            renderTable(flightsData);            
+        };
+
+
+
+        //filter according to selected option in dropdown
+        let Crappy = "El Al";
+         document.querySelector('button.sort-arg').onclick = function() {
+             flightsData = _.filter(flightsData,['by',Crappy]);
+             renderTable(flightsData);
+         };
+        
+    </script>
+</body>
+</html>
