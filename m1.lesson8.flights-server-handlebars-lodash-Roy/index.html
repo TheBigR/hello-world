@@ -22,11 +22,9 @@
             <option>nothing to show yet</option>
         </select>
         <script id='Airline-dropdown-template' type='text/x-handlebars-template'>
-            {{#each this}}
-            <select>
-                <option>{{airline}}</option>
-            </select>
-            {{/each}}
+                {{#each this}}
+                <option>{{by}}</option>
+                {{/each}}
         </script>
         <button class="sort-arg">filter by airline</button>
         <table id="flight-table">
@@ -71,18 +69,19 @@
         let flightsData = [];
         let selectOptions = [];
 
+
         document.querySelector('button.load').onclick = function() {
             fetch('flights.json')
                 .then(res => res.json())
                 .then(data => {
                     flightsData = data;
                     renderTable(flightsData);
+                   selectOptions =  _.uniqBy(flightsData, 'by');
+                    addOption(selectOptions);
+                   console.log(selectOptions);
                 });
 
-            selectOptions.push('airline first option');
-            selectOptions.push('airline second option');
-            selectOptions.push('airline seconttt');
-            addOption(selectOptions);
+
         };
 
 
@@ -93,7 +92,7 @@
 
         // add option to dropdown with handlebars
         function addOption(data) {
-            document.querySelector('#actualSelect option').innerHTML = selectOptionTmpl(data);
+            document.querySelector('#actualSelect').innerHTML = selectOptionTmpl(data);
         }
 
         //
@@ -113,8 +112,9 @@
 
 
         //filter according to selected option in dropdown
-        let Crappy = "El Al";
+        
          document.querySelector('button.sort-arg').onclick = function() {
+             let Crappy = document.getElementById("actualSelect").value;
              flightsData = _.filter(flightsData,['by',Crappy]);
              renderTable(flightsData);
          };
