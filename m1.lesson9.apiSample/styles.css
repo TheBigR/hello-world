@@ -7,6 +7,11 @@ section {
     margin: 20px 0;
 }
 
+#mapid {
+     height: 400px;
+     width: 400px;
+    }
+
 h1 {
     color: rgb(8, 70, 88);
     text-shadow: 0 2px 3px #555;
