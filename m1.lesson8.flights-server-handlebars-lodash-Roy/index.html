@@ -80,8 +80,6 @@
                     addOption(selectOptions);
                    console.log(selectOptions);
                 });
-
-
         };
 
 
@@ -94,9 +92,7 @@
         function addOption(data) {
             document.querySelector('#actualSelect').innerHTML = selectOptionTmpl(data);
         }
-
-        //
-
+        
         // sorting by departure
         document.querySelector('button.sort-dep').onclick = function() {
             flightsData = _.sortBy(flightsData, flight => new Date(flight.departure));
@@ -109,10 +105,14 @@
             renderTable(flightsData);            
         };
 
+<<<<<<< HEAD
 
 
         //filter according to selected option in dropdown
 
+=======
+        //filter according to selected option in dropdown        
+>>>>>>> 35172ba154d4aa95475473cbc8dcf77b7ff01a88
          document.querySelector('button.sort-arg').onclick = function() {
              let Crappy = document.getElementById("actualSelect").value;
              flightsData = _.filter(flightsData,['by',Crappy]);
