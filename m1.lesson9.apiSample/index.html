@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>weather api sample</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">    
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.js'></script>
+</head>
+<body>
+
+    <section>
+        <button class="goFetch">go fetch!</button>
+        <select id="actualSelect">
+            <option></option>
+            <option>London</option>
+            <option>Boston</option>
+            <option>Palo alto</option>
+            <option>New york</option>
+        </select>
+    </section>
+    <section>
+        <table id="weather-table">
+            <caption>City</caption>
+            <thead>
+            <tr>
+                <th>City</th>
+                <th>Temp</th>
+                <th>Wind</th>
+                <th>Humidity</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    No results yet (her come output of Handlebars template)
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+    <script id='table-row-template' type='text/x-handlebars-template'>
+
+        <tr>
+            <td>{{name}}</td>
+            <td>{{temp}}</td>
+            <td>{{speed}}</td>
+            <td>{{humidity}}</td>
+        </tr>
+
+    </script>
+
+    <script>
+        const weatherKey = '&appid=32d4cbca031cf3240f3c22d40d6b88e5';
+        const tBodyTmpl = Handlebars.compile(document.getElementById('table-row-template').innerHTML);
+
+        let weatherUrl = 'http://api.openweathermap.org/data/2.5/weather?q=';
+        let unitSnippet = '&units=metric';
+
+        let weatherData = [];
+
+        // render tbody with handlebars
+        function renderTable(data) {
+            // document.querySelector('#weather-table tbody').innerHTML = tBodyTmpl(data);
+            const tmpData = {
+                name: "crap",
+                temp: 33,
+                speed:123,
+                humidity:16
+            }
+            document.querySelector('#weather-table tbody').innerHTML = tBodyTmpl(tmpData);
+            setinfo(data);
+        }
+        //document.querySelector('button.goFetch').onclick =
+
+        document.getElementById('actualSelect').onchange = function() {
+            fetch(weatherUrl + document.getElementById('actualSelect').value+ unitSnippet + weatherKey)
+                .then(res=>res.json())
+                .then(json => renderTable(json))
+
+        };
+        console.log('shit is working');
+
+        function setinfo(data) {
+            console.log(data)
+        }
+    </script>
+</body>
+</html>
