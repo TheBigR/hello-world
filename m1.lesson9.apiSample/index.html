@@ -63,10 +63,10 @@
         function renderTable(data) {
             // document.querySelector('#weather-table tbody').innerHTML = tBodyTmpl(data);
             const tmpData = {
-                name: "crap",
-                temp: 33,
-                speed:123,
-                humidity:16
+                name: data.name,
+                temp: data.main.temp ,
+                speed:data.wind.speed,
+                humidity: data.main.humidity
             }
             document.querySelector('#weather-table tbody').innerHTML = tBodyTmpl(tmpData);
             setinfo(data);
