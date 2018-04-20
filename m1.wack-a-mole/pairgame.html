@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+        
+<head>
+    <title>Pair Game</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Roy Nevo">
+    <meta name="keywords" content="HTML,CSS,JavaScript">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="pairgame_styles.css">
+</head>
+<body>
+        <ul class="flex-container">
+                <li class="flex-item" id="1"></li>
+                <li class="flex-item" id="2"></li>
+                <li class="flex-item" id="3"></li>
+                <li class="flex-item" id="4"></li>
+                <li class="flex-item" id="5"></li>
+                <li class="flex-item" id="6"></li>
+                <li class="flex-item" id="7"></li>
+                <li class="flex-item" id="8"></li>
+                <li class="flex-item" id="9"></li>
+                <li class="flex-item" id="10"></li>
+                <li class="flex-item" id="11"></li>
+                <li class="flex-item" id="12"></li>
+                <li class="flex-item" id="13"></li>
+                <li class="flex-item" id="14"></li>
+                <li class="flex-item" id="15"></li>
+                <li class="flex-item" id="16"></li>
+                <li class="flex-item" id="17"></li>
+                <li class="flex-item" id="18"></li>
+                <li class="flex-item" id="19"></li>
+                <li class="flex-item" id="20"></li>
+                <li class="flex-item" id="21"></li>
+                <li class="flex-item" id="22"></li>
+                <li class="flex-item" id="23"></li>
+                <li class="flex-item" id="24"></li>
+                <li class="flex-item" id="25"></li>
+                <li class="flex-item" id="26"></li>
+                <li class="flex-item" id="27"></li>
+                <li class="flex-item" id="28"></li>
+                <li class="flex-item" id="29"></li>
+                <li class="flex-item" id="30"></li>
+                <li class="flex-item" id="31"></li>
+                <li class="flex-item" id="32"></li>
+                <li class="flex-item" id="33"></li>
+                <li class="flex-item" id="34"></li>
+                <li class="flex-item" id="35"></li>
+                <li class="flex-item" id="36"></li>               
+              </ul>
+
+    <script>
+        let crap = "23";
+
+        $("#33").css("background", "yellow");
+        $("#" + crap).css("background", "green").addClass("Selected");
+        $(".Selected").click(function() { 
+            $(".Selected").css("background","blue");
+        });
+
+    </script>
+</body>
+</html>
