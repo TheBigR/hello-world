@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {CarserviceService } from './carservice.service';
 
 import { AppComponent } from './app.component';
 import { ListComponent } from './list/list.component';
+import {SecondmoduleModule} from './secondmodule/secondmodule.module';
 
 
 @NgModule({
@@ -12,9 +13,10 @@ import { ListComponent } from './list/list.component';
     ListComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    SecondmoduleModule
   ],
-  providers: [],
+  providers: [CarserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
